@@ -57,7 +57,7 @@
                   <td>$row[Address]</td>
                   <td>$row[Created_at]</td>
                   <td>
-                     <a class='btn btn-primary btn-sm' href='./edit.php?id=$row[ID]'>Edit</a>
+                     <a class='btn btn-primary btn-sm' href='./update.php?id=$row[ID]'>Edit</a>
                      <a class='btn btn-danger btn-sm' href='./delete.php?id=$row[ID]'>Delete</a>
                   </td>
                </tr>
