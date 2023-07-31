@@ -2,7 +2,7 @@
 $server = "localhost";
 $dbname="users_db";
 $username="root";
-$password="";
+$password="root";
 $conn = new mysqli($server,$username,$password,$dbname);
 if(!$conn){
    echo 'Connection failed!';

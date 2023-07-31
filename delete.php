@@ -5,7 +5,7 @@ if( isset($_GET["id"]) ) {
 $server = "localhost";
 $dbname="users_db";
 $username="root";
-$password="";
+$password="root";
 
 //create connection
 $conn = new mysqli($server,$username,$password,$dbname);

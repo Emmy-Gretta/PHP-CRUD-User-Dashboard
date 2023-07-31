@@ -21,6 +21,7 @@
                <th>Email</th>
                <th>Phone</th>
                <th>Address</th>
+               <th>Password</th>
                <th>Created at</th>
                <th>Action</th>
             </tr>
@@ -30,7 +31,7 @@
                $server = "localhost";
                $dbname="users_db";
                $username="root";
-               $password="";
+               $password="root";
                $conn = new mysqli($server,$username,$password,$dbname);
                if(!$conn){
                   echo 'Connection failed!';
@@ -55,6 +56,7 @@
                   <td>$row[Email]</td>
                   <td>$row[Phone]</td>
                   <td>$row[Address]</td>
+                  <td>$row[Password]</td>
                   <td>$row[Created_at]</td>
                   <td>
                      <a class='btn btn-primary btn-sm' href='./update.php?id=$row[ID]'>Edit</a>

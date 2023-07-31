@@ -2,7 +2,7 @@
 $server = "localhost";
 $dbname="users_db";
 $username="root";
-$password="";
+$password="root";
 
 //create connection
 $conn = new mysqli($server,$username,$password,$dbname);
@@ -11,6 +11,7 @@ $name="";
 $email="";
 $phone="";
 $address="";
+$password="";
 
 $errorMessage = "";
 $successMessage= "";
@@ -20,16 +21,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
    $email = $_POST['email'];
    $phone = $_POST['phone'];
    $address = $_POST['address'];
+   $password = $_POST['password'];
+   $password =Md5($password );
 
    do{
-      if( empty($name) || empty($email) || empty($phone) || empty($address) ){
+      if( empty($name) || empty($email) || empty($phone) || empty($address) || empty($password) ){
           $errorMessage = "Please fill all the fields!";
           break;
       }
 
       //add new client to the database
-      $sql = "INSERT INTO clients (name, email, phone, address)" . 
-                "VALUES ('$name','$email','$phone','$address')";
+      $sql = "INSERT INTO clients (name, email, phone, address,password)" . 
+                "VALUES ('$name','$email','$phone','$address','$password')";
       $result = $conn->query($sql);
       if(!$result){
          $errorMessage = "Invalid query: " . $conn->error;
@@ -40,10 +43,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $email="";
       $phone="";
       $address="";
+      $password="";
 
       $successMessage = "User added successfully!";
       
-      header("Location: index.php");
+      header("Location: login.php");
       exit;
 
    }while(false);
@@ -101,6 +105,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <label class="col-sm-3 col-form-label" for="name">Address</label>
             <div class="col-sm-6">
                <input type="text" class="form-control" name="address" value="<?php echo $address; ?>">
+            </div>
+         </div>
+         <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" for="name">Password</label>
+            <div class="col-sm-6">
+               <input type="password" class="form-control" name="password" value="<?php echo $password; ?>">
             </div>
          </div>
 
